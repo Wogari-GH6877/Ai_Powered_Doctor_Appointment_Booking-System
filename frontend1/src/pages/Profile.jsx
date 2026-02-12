@@ -3,6 +3,7 @@ import { assets } from '../assets/frontend_assets/assets'
 import { AppContext } from '../context/AppContext'
 import axios from 'axios'
 import { toast } from 'react-toastify'  
+import { use } from 'react'
 function Profile() {
 
   const {userData,setUserData,backendUrl,token}=useContext(AppContext);
@@ -33,7 +34,9 @@ function Profile() {
         toast.error(error.message);
       }
     }
-  return (
+
+    
+  return (userData) && (
     <div className='mt-6'>
      { isEdit ?<><label htmlFor="image">
               <img className="w-16 bg-gray-100 rounded-full cursor:pointer" src={image? URL.createObjectURL(image) : userData?.image } alt="" />

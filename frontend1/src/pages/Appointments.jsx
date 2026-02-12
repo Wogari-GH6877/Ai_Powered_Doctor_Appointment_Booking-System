@@ -1,20 +1,28 @@
 import React, { useContext, useEffect, useState } from 'react'
 import { AppContext } from '../context/AppContext'
 import { useParams, useNavigate } from 'react-router-dom';
+import { toast } from 'react-toastify';
+import { assets } from '../assets/frontend_assets/assets';
 
+import axios from 'axios';
 function Appointments() {
 
 
 const navigate=useNavigate();
 
 
-const {doctors}=useContext(AppContext);
+const {doctors,getDoctorsData,token,backendUrl,userData}=useContext(AppContext);
 const {doctId}=useParams();
 
 const [doctInfo,setDoctInfo]=useState(null);
 const [relatedDoc,setRelatedDoc]=useState([]);
 
 const daysOfWeek=["SUN","MON","TUE","WEN","THU","FRI","SAT"]
+
+const [docSlots,setDocSlots]=useState([]);
+  const [slotIndex,setSlotIndex]=useState(0);
+  const [slotTime,setSlotTime]=useState('')
+
 
 const fetchDocInfo=()=>{
 
@@ -23,12 +31,10 @@ const fetchDocInfo=()=>{
   setRelatedDoc(filterRelatedDoc);
   setDoctInfo(filterDoc);
 
-console.log(filterDoc)}
+// console.log(filterDoc)}
+}
 
-  const [docSlots,setDocSlots]=useState([]);
-  const [slotIndex,setSlotIndex]=useState(0);
-  const [slotTime,setSlotTime]=useState('')
-
+  
 
 const getAvailableSlots = async()=>{
   setDocSlots([]);
@@ -64,12 +70,29 @@ const getAvailableSlots = async()=>{
     while(currentDate < endTime){
       let formattedTime= currentDate.toLocaleTimeString([],{hour:'2-digit',minute:'2-digit',})
 
-      // add slot to array
+      let day= currentDate.getDate();
+      let month= currentDate.getMonth() +1;
+      let year= currentDate.getFullYear();
 
-      timeSlots.push({
+      let slotDate= day + "-" + month + "-" + year;
+
+      const slotTime= formattedTime;
+
+      const isSlotAvailable =
+  doctInfo?.slots_booked?.[slotDate]?.includes(slotTime)
+    ? false
+    : true;
+
+      
+      if(isSlotAvailable){
+         
+
+        timeSlots.push({
         datetime:new Date(currentDate),
         time:formattedTime
       })
+      }
+      
 
       // increament current time by 30 minute
 
@@ -83,7 +106,37 @@ const getAvailableSlots = async()=>{
 }
 
 
+const bookAppointment=async()=>{
 
+  if(!token){
+
+    toast.warn("Please login to book an appointment");
+    return navigate("/login");
+}
+    try {
+       let date=docSlots[slotIndex][0].datetime;
+       let day= date.getDate();
+       let month=date.getMonth() +1;
+       let year=date.getFullYear();
+
+       const slotDate=day + "-" + month + "-" + year;
+      //  console.log(slotDate);
+        const {data}=await axios.post(backendUrl + "/api/user/book-appointment",{userId:userData._id,docId:doctId,slotDate,slotTime},{headers:{token}});
+        console.log(data);
+          
+        if(data.success){
+          toast.success(data.message);
+          getDoctorsData();
+          navigate("/my-appointments");
+        }else{
+          // console.log(data);
+          toast.error(data.message);
+        }
+    } catch (error) {
+      //  console.log(error);
+       toast.error(error.message);
+    }
+}
  
 
 useEffect(()=>{
@@ -154,17 +207,17 @@ useEffect(()=>{
           {/* text part */}
 
           <div>
-            <h1 className='text-2xl mb-3 font-semibold flex items-center gap-2'>{doctInfo?.name} <BadgeCheck className=' bg-primary rounded-full text-white'/></h1>
+            <h1 className='text-2xl mb-3 font-semibold flex items-center gap-2'>{doctInfo?.name} <img src={assets.verified_icon} alt="Verified" className="w-5 h-5" /></h1>
             <p>
               <span className='text-xl '>{doctInfo?.degree} -</span>
               <span className='text-xl '>{doctInfo?.speciality}</span>
-              <span className='py-2 px-4 border border-gray-500 ml-2 rounded-full text-black-400'> {doctInfo?.experience} </span>
+              <span className='py-2 px-4 border border-gray-500 ml-2 rounded-full text-black-400'> {doctInfo?.experience} Year</span>
 
             </p>
 
           </div>
           <div className='mt-6'>
-            <p className='flex gap-3 mb-4 font-semibold'>About <Info className=""/></p>
+            <p className='flex gap-3 mb-4 font-semibold'>About <img src={assets.info_icon} alt="Info" className="w-5 h-5" /></p>
 
             <p>{doctInfo?.about}</p>
           </div>
@@ -229,7 +282,7 @@ useEffect(()=>{
           </ul> */}
         </div>
         <div>
-        <button className='mt-4 px-8 py-3 bg-primary border border-primary rounded-full text-white '>Book an appointment</button>
+        <button onClick={bookAppointment} className='mt-4 px-8 py-3 bg-primary border border-primary rounded-full text-white '>Book an appointment</button>
       </div>
 
       </div>

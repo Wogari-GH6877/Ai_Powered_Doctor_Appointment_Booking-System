@@ -19,10 +19,10 @@ function Header() {
                    schedule your appointment hassle-free.</p>
              </div>
 
-             <div className='flex gap-2 px-4 py-3   text-black  justify-center items-center bg-white rounded-full md:w-1/3 mb-4'>
+             <a href="#speciality-section"className='flex gap-2 px-4 py-3   text-black  justify-center items-center bg-white rounded-full md:w-1/3 mb-4'>
               <button className=''>Book Appointment </button>
               <img className='' src={assets.arrow_icon} alt="" />
-          </div>
+          </a>
         </div>
 
         {/* Right Part */}
