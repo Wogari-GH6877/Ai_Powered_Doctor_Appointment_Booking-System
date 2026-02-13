@@ -1,0 +1,29 @@
+@import "tailwindcss";
+
+@theme{
+
+  --color-primary:#7375F5;
+
+    --color-surface:#1a2329;
+}
+
+@layer components{
+  .glass{
+    background-color: color-mix(in srgb,var(--color-surface)50%,transparent);
+    backdrop-filter: blur(16px);
+  }
+
+  .strong-glass{
+    background-color: color-mix(in srgb,var(--color-surface)50%,transparent);
+    backdrop-filter: blur(24px);
+  }
+  .no-scrollbar::-webkit-scrollbar {
+  display: none;
+}
+
+.no-scrollbar {
+  -ms-overflow-style: none;  /* IE & Edge */
+  scrollbar-width: none;     /* Firefox */
+}
+
+}
