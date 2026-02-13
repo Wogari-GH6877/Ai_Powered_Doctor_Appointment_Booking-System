@@ -11,7 +11,7 @@ import Navbar from './components/Navbar'
 import Contact from '../src/pages/Contact.jsx'
 import Footer from './components/Footer'
 import { ToastContainer, toast } from 'react-toastify';
-import AiAssistant from './components/Aiassistant.jsx'
+import AiAssistant from './components/AiAssistant.jsx'
 
 function App() {
   return (
