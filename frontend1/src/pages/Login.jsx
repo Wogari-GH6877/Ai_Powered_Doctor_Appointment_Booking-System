@@ -53,39 +53,85 @@ useEffect(()=>{
   }},[token])
 
   return (
-    <form onSubmit={onSubmitHandler} className='min-h-100 md:w-full flex justify-center items-center '>
-      <div className='w-1/4 border border-gray-300 drop-shadow-lg px-6 py-13 mt-30 mb-30 ' >
-       {state==="SignUp"?<h2 className='text-xl mb-3 font-semibold text-gray-600 '>Create Account</h2>:
-       <h2 className='text-xl mb-3 font-semibold text-gray-600 '>Login</h2>
-       }
-       {state==="SignUp"? <p className='text-sm mb-2 mt-4'>Please sign up to book appointment</p>:
-       <p className='text-sm mb-2 mt-4'>Please Login to book appointment</p>}
-       
+    <form
+  onSubmit={onSubmitHandler}
+  className='min-h-screen flex justify-center items-center px-4'
+>
+  <div className='w-full sm:w-3/4 md:w-1/2 lg:w-1/3 border border-gray-300 shadow-lg px-6 py-8 rounded-xl bg-white'>
+    
+    <h2 className='text-xl mb-3 font-semibold text-gray-600'>
+      {state === "SignUp" ? "Create Account" : "Login"}
+    </h2>
 
-      {state==="SignUp"?<div className='flex flex-col gap-2 '>
+    <p className='text-sm mb-4'>
+      {state === "SignUp"
+        ? "Please sign up to book appointment"
+        : "Please Login to book appointment"}
+    </p>
+
+    {state === "SignUp" && (
+      <div className='flex flex-col gap-2 mb-4'>
         <span className='text-sm text-gray-600'>Full Name</span>
-        <input className='bg-white py-1 outline-none border border-gray-300'type="text" onChange={(e)=>setName(e.target.value)} required value={name}/>
-       </div>:""}
+        <input
+          className='bg-white py-2 px-3 outline-none border border-gray-300 rounded-md focus:border-primary'
+          type="text"
+          onChange={(e) => setName(e.target.value)}
+          required
+          value={name}
+        />
+      </div>
+    )}
 
-       <div className='flex flex-col gap-2'>
-        <span className='text-sm text-gray-600'>Email</span>
-        <input className='bg-white py-1 outline-none border border-gray-300'type="email" onChange={(e)=>setEmail(e.target.value)}required value={email} />
-       </div>
+    <div className='flex flex-col gap-2 mb-4'>
+      <span className='text-sm text-gray-600'>Email</span>
+      <input
+        className='bg-white py-2 px-3 outline-none border border-gray-300 rounded-md focus:border-primary'
+        type="email"
+        onChange={(e) => setEmail(e.target.value)}
+        required
+        value={email}
+      />
+    </div>
 
-       <div className='flex flex-col gap-2'>
-        <span className='text-sm text-gray-600'>Password</span>
-        <input className='bg-white py-1 outline-none border border-gray-300' type="password" onChange={(e)=>setPassword(e.target.value)}required value={password}/>
-       </div>
+    <div className='flex flex-col gap-2 mb-4'>
+      <span className='text-sm text-gray-600'>Password</span>
+      <input
+        className='bg-white py-2 px-3 outline-none border border-gray-300 rounded-md focus:border-primary'
+        type="password"
+        onChange={(e) => setPassword(e.target.value)}
+        required
+        value={password}
+      />
+    </div>
 
-       <div>
-        <button type="submit" className='py-2 w-full bg-primary mt-5 rounded-xl mb-2 text-white'>{state==="SignUp"?"Create Account":"Login"}</button>
-       </div>
+    <button
+      type="submit"
+      className='py-2 w-full bg-primary rounded-lg text-white mt-2 hover:opacity-90 transition'
+    >
+      {state === "SignUp" ? "Create Account" : "Login"}
+    </button>
 
-       <p className='text-sm'>Already have an account? {state==="SignUp"?<span className='underline text-blue-700 cursor-pointer' onClick={()=> setState("Login")}>Login here</span>:
-       <span className='underline text-blue-700 cursor-pointer' onClick={()=>{setState("SignUp")}}>SignUp</span>}</p>
+    <p className='text-sm mt-4 text-center'>
+      Already have an account?{" "}
+      {state === "SignUp" ? (
+        <span
+          className='underline text-blue-700 cursor-pointer'
+          onClick={() => setState("Login")}
+        >
+          Login here
+        </span>
+      ) : (
+        <span
+          className='underline text-blue-700 cursor-pointer'
+          onClick={() => setState("SignUp")}
+        >
+          Sign Up
+        </span>
+      )}
+    </p>
+  </div>
+</form>
 
-       </div>
-    </form>
   )
 }
 

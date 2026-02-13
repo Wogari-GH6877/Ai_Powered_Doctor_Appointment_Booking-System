@@ -187,7 +187,7 @@ useEffect(()=>{
       {/* Top part */}
 
       
-      <div className='flex gap-5'>
+      <div className='md:flex gap-5'>
         {/* images part */}
         <div className='flex'>
           <div className='w-80  border border-black justify-center rounded-2xl bg-primary'>
@@ -217,7 +217,7 @@ useEffect(()=>{
 
           </div>
           <div className='mt-6'>
-            <p className='flex gap-3 mb-4 font-semibold'>About <img src={assets.info_icon} alt="Info" className="w-5 h-5" /></p>
+            <p className='md:flex gap-3 mb-4 font-semibold'>About <img src={assets.info_icon} alt="Info" className="w-5 h-5" /></p>
 
             <p>{doctInfo?.about}</p>
           </div>
@@ -235,7 +235,7 @@ useEffect(()=>{
       <div className='flex flex-col ml-10 gap-4 mt-7'>
         <h1 className='text-xl font-semibold'>Booking slots</h1>
 
-        <div className='flex gap-4'>
+        <div className='flex gap-4 overflow-x-scroll whitespace-nowrap no-scrollbar'>
 
           {
             docSlots.length && docSlots.map((items,index)=>(
@@ -290,7 +290,7 @@ useEffect(()=>{
 
       {/* botttom part */}
 
-      <div className='flex flex-col items-center mt-20'>
+      <div className='flex flex-col items-center md:mt-20'>
         <h1 className='text-3xl mb-3'>Related Doctors</h1>
         <p className='text-xs'>Simply browse through our extensive list of trusted doctors.</p>
 

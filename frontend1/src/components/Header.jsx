@@ -15,8 +15,10 @@ function Header() {
 
              <div className='mt-5 gap-3  md:flex'>
                 <img className='w-25' src={assets.group_profiles} alt="" />
-                <p className='text-sm text-white'>Simply browse through our extensive list of trusted doctors,<br />
-                   schedule your appointment hassle-free.</p>
+                <p className='text-sm text-white'><span className='font-bold bg-white text-primary px-2 py-1 rounded-md'>
+           Our AI-Driven
+            </span>  platform helps you find the best doctors,<br className='mt-2'/> 
+           compare specialties, and book appointments seamlessly in just a few clicks.</p>
              </div>
 
              <a href="#speciality-section"className='flex gap-2 px-4 py-3   text-black  justify-center items-center bg-white rounded-full md:w-1/3 mb-4'>

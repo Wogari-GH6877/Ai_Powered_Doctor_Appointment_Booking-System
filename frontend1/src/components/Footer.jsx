@@ -9,7 +9,7 @@ function Footer() {
         {/* left part */}
         <div>
           <img className='w-44' src={assets.logo} alt="" />
-          <p className='mt-4 text-x'>
+          <p className='mt-4 text-sm'>
             We are a trusted healthcare platform dedicated to connecting patients with 100+ verified <br/> 
             and  experienced doctors. Easily book appointments , access quality medical care , and <br />take control of your health with confidence.
           </p>
@@ -42,7 +42,7 @@ function Footer() {
 
     <div className='mt-6 mb-5 '>
         <hr />
-        <p className='text-center mt-3'>Copyright © 2024 wakTech - All Right Reserved.</p>
+        <p className='text-center mt-3'>Copyright © 2026 Waktech - All Right Reserved.</p>
     </div>
 
         

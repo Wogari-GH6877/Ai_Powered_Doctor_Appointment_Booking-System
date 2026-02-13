@@ -35,7 +35,7 @@ function Navbar() {
         <div className='hidden md:flex gap-6 '>
           {
             NavList.map((item,index)=>(
-              <NavLink to={item.link} key={index} className=' text-lg'> 
+              <NavLink to={item.link} key={index} className=' font-semibold text-xl'> 
                {item.label}
                <hr className='hidden bg-primary h-0.5'/>
               </NavLink>
@@ -47,7 +47,6 @@ function Navbar() {
         {/* Right Side Part */}
 
         <div className='flex gap-3'>
-
 
           {token?<div >
           {token?
