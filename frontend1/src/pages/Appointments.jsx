@@ -157,27 +157,7 @@ useEffect(()=>{
 },[docSlots])
 
 
-  // const {doctors}=useContext(AppContext);
-  // const {doctId}=useParams();
-  // const [filterDoc,setFilterDoc]=useState([]);
-  // const [speDoctor,setSpeDoctor]=useState([]);
-  // const navigate = useNavigate();
-
-  // useEffect(()=>{
-  //   const filtered = doctors.filter(doc=> doc._id===doctId);
-  //   setFilterDoc(filtered);
-  //   if (filtered.length > 0) {
-  //     setSpeDoctor(doctors.filter(doc=>doc.speciality===filtered[0].speciality && doc._id !== doctId));
-  //   } else {
-  //     setSpeDoctor([]);
-  //   }
-  // },[doctId,doctors]);
-  
-  
-
-  // // useEffect(()=>{
-  // //   ApplyFilter();
-  // // },[doctId,doctors])
+ 
 
     
 

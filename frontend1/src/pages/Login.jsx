@@ -24,7 +24,7 @@ import { toast } from 'react-toastify';
         if(data.success){
           localStorage.setItem("token",data.token);
           setToken(data.token);
-          navigate("/");
+          // navigate("/");
           setName("");
           setEmail("");
           setPassword("");  

@@ -28,7 +28,7 @@ function AppContextProvider(props) {
               }
           } catch (error) {
               console.log(error);
-              toast.error(error.message);
+              // toast.error(error.message);
           }
       }
 
@@ -40,7 +40,7 @@ function AppContextProvider(props) {
           // console.log(data)
 
         }else{         
-           toast.error(data.message);
+          //  toast.error(data.message);
         }
       
       }
@@ -62,10 +62,15 @@ const value={doctors,specialityData,currencySymbol,
 
       useEffect(()=>{
         if(token){
+            axios.defaults.headers.common["token"] = token;
+
           loadProfileData();
-}else{
-  setUserData(false);}
-},[token]);
+          
+    }else{
+      setUserData(false);
+
+    }
+    },[token]);
 
 
   return (

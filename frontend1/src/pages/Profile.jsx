@@ -3,7 +3,7 @@ import { assets } from '../assets/frontend_assets/assets'
 import { AppContext } from '../context/AppContext'
 import axios from 'axios'
 import { toast } from 'react-toastify'  
-import { use } from 'react'
+
 function Profile() {
 
   const {userData,setUserData,backendUrl,token}=useContext(AppContext);
