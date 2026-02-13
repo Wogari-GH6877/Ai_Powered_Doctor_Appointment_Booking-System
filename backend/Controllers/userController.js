@@ -1,12 +1,11 @@
-import validator from "validator"
+import validator from "validator";
 import userModel from "../Models/UserModel.js";
 import bcrypt from "bcrypt"
 import jwt from "jsonwebtoken"
 import{v2 as cloudinary} from "cloudinary";
 import doctorModel from "../Models/DoctorModel.js";
 import appointmentModel from "../Models/AppointmentModel.js";
-import emailTemplate from "../Config/EmailTemplate.js";
-import Transporter from "../Config/NodeMailer.js";  
+import Transporter from "../Config/nodemailer.js";
 
 export const SignUp=async (req,res)=>{
 
