@@ -7,7 +7,6 @@ export const changeAvailability= async(req,res)=>{
         const {docId}=req.body;
 
         const docData=await doctorModel.findById(docId);
-        console.log(docData);
         await doctorModel.findByIdAndUpdate(docId,{available:!docData.available});
         res.json({success:true,message:"availability changed"})
 

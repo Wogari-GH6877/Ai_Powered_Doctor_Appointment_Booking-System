@@ -187,7 +187,6 @@ export const bookAppointment = async(req,res)=>{
         
         const {userId,docId,slotDate,slotTime}=req.body;
         const docData=await doctorModel.findById(docId).select("-password");
-        console.log(docData);
 
         // if(!userId || !docId || !slotDate || !slotTime){
         //     return res.json({success:false,message:"Missing Details"})}
@@ -244,7 +243,6 @@ export const listAppointment=async(req,res)=>{
     try {
         const userId=req.userId;
         const appointments=await appointmentModel.find({userId});
-        console.log(appointments);
 
 
         res.json({success:true,appointments});

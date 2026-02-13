@@ -9,7 +9,7 @@ import AdminRouter from "./Routes/adminRoutes.js";
 import doctorRouter from "./Routes/doctorRoutes.js";
 import userRouter from "./Routes/userRoutes.js";
 import chatRouter from "./Routes/chatRoutes.js";
-// App Config 
+
 
 const app=express();
 const Port=process.env.PORT || 4000;
@@ -18,7 +18,6 @@ const Port=process.env.PORT || 4000;
 DBConnection();
 connectCloudinary();
 
-console.log(process.env.MONGO_URI);
 
 
 // middlewre config
@@ -26,7 +25,7 @@ console.log(process.env.MONGO_URI);
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
 app.use(cors({
-    origin: ["http://localhost:5174","http://localhost:5173","http://localhost:5175"],
+    origin: ["http://localhost:5174","http://localhost:5173","http://localhost:5175",process.env.CLIENT_URL,process.env.ADMIN_URL],
   methods: ["GET", "POST", "PUT", "DELETE"],
   credentials: true
 }));

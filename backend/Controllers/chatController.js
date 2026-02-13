@@ -74,11 +74,11 @@ const getAiResponse = async (req, res) => {
       history: formattedHistory
     });
 
-    // 7️ Generate AI Response
+    // Generate AI Response
     const result = await chatSession.sendMessage(message);
     const replyText = result.response.text();
 
-    // 8️ Save to Atlas
+    //  Save to Atlas
     await chatModel.create([
       { userId, conversationId, role: "user", parts: [{ text: message }] },
       { userId, conversationId, role: "model", parts: [{ text: replyText }] }
