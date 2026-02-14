@@ -1,7 +1,7 @@
 import React, { useState, useEffect, useRef } from 'react';
 import axios from 'axios';
 import ReactMarkdown from 'react-markdown';
-
+import { AppContext } from '../context/AppContext.jsx';
 const AiAssistant = () => {
     const [showChat, setShowChat] = useState(false);
     const [messages, setMessages] = useState([]);
@@ -11,6 +11,7 @@ const AiAssistant = () => {
     const [isListening, setIsListening] = useState(false);
     const chatEndRef = useRef(null);
     const token = localStorage.getItem('token');
+    const {backendurl}=useContext(AppContext);
 
     const scrollToBottom = () => {
         chatEndRef.current?.scrollIntoView({ behavior: "smooth" });
@@ -40,7 +41,7 @@ const AiAssistant = () => {
             if (convId && token) {
                 try {
                     setIsTyping(true);
-                    const { data } = await axios.get(`http://localhost:4000/api/chat/history/${convId}`, {
+                    const { data } = await axios.get(`${backendurl}/api/chat/history/${convId}`, {
                         headers: { token: token }
                     });
                     if (data.success && Array.isArray(data.messages)) setMessages(data.messages);
@@ -60,7 +61,7 @@ const AiAssistant = () => {
         setInput("");
         setIsTyping(true);
         try {
-            const { data } = await axios.post('http://localhost:4000/api/chat/ask', 
+            const { data } = await axios.post(`${backendurl}/api/chat/ask`, 
                 { message: lastInput, conversationId: convId },
                 { headers: { token: token } }
             );
