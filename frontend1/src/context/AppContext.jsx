@@ -14,7 +14,7 @@ function AppContextProvider(props) {
   const [token,setToken]=useState(localStorage.getItem("token") ? localStorage.getItem("token") : false);
   const [userData,setUserData]=useState(false);  
 
-  console.log("Backend URL:", backendUrl);
+  // console.log("Backend URL:", backendUrl);
 
   const getDoctorsData= async()=>{
           

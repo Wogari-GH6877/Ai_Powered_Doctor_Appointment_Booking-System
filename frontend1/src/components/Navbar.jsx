@@ -15,6 +15,7 @@ function Navbar() {
   const navigate=useNavigate();
   const {token,setToken,userData}=useContext(AppContext);
   const [isMobileMenuOpened,setIsMobileMenuOpened]=useState(false);
+  const [dropdownOpen, setDropdownOpen] = useState(false);
 
   const Logout =()=>{
     setToken(false);
@@ -50,16 +51,18 @@ function Navbar() {
 
           {token?<div >
           {token?
-          <div className='flex gap-2 align-center cursor-pointer relative group'>
+          <div className='flex gap-2 align-center cursor-pointer relative group' onClick={() => setDropdownOpen(!dropdownOpen)}
+>
                <img className="w-8 rounded-full "src={userData?.image} alt="profile_image" />
                <img className="w-2.5" src={assets.dropdown_icon} alt="drop_down_icon" />
-              <div className='absolute top-0 right-0 pt-14 font-medium text-gray-600 z-20 hidden group-hover:block'>
+               {dropdownOpen &&
+              (<div className='absolute top-0 right-0 pt-14 font-medium text-gray-600 z-20 hidden group-hover:block'>
                  <div className='min-w-48 bg-stone-100 rounded flex flex-col gap-3 p-4'>
                   <p onClick={()=>navigate("/my-profile")}className='hover:text-black'>My Profile</p>
                   <p onClick={()=>navigate("/my-appointments")} className='hover:text-black'>My Appointments</p>
                   <p onClick={()=>Logout()}className='hover:text-black'>Logout</p>
                  </div>
-              </div>
+              </div>)}
             </div>:
             <button onClick={()=>navigate("/login")} className='px-8 py-3 bg-primary text-white rounded-full'>Create Account</button>
             }
@@ -73,7 +76,7 @@ function Navbar() {
 
            {/* Mobile Menu Button */}
 
-          <button className='md:hidden cursor-pointer' onClick={()=>{setIsMobileMenuOpened(!isMobileMenuOpened)}}>
+          <button className='md:hidden cursor-pointer w-6 h-6' onClick={()=>{setIsMobileMenuOpened(!isMobileMenuOpened)}}>
             {<img src={assets.menu_icon} alt="Menu_icon" />}
           </button>
 
