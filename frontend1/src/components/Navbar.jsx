@@ -106,7 +106,7 @@ function Navbar() {
         </div>
 
         <div className=''>
-              <button onClick={()=>navigate("/login")} className='px-3 py-2 rounded-full bg-primary text-white w-full mt-5 text-lg  '>Create Account</button>
+              <button onClick={()=>{navigate("/login"); setIsMobileMenuOpened(!isMobileMenuOpened)}} className='px-3 py-2 rounded-full bg-primary text-white w-full mt-5 text-lg  '>Create Account</button>
           </div>
 
         </div>
