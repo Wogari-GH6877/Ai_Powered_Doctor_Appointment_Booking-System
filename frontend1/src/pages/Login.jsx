@@ -107,6 +107,7 @@ useEffect(()=>{
     <button
       type="submit"
       className='py-2 w-full bg-primary rounded-lg text-white mt-2 hover:opacity-90 transition'
+      onClick={()=>{window.scrollTo(0,0)}}
     >
       {state === "SignUp" ? "Create Account" : "Login"}
     </button>
