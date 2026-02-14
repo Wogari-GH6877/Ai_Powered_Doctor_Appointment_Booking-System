@@ -11,7 +11,7 @@ const AiAssistant = () => {
     const [isListening, setIsListening] = useState(false);
     const chatEndRef = useRef(null);
     const token = localStorage.getItem('token');
-    const {backendurl}=useContext(AppContext);
+    const {backendUrl}=useContext(AppContext);
 
     const scrollToBottom = () => {
         chatEndRef.current?.scrollIntoView({ behavior: "smooth" });
@@ -41,7 +41,7 @@ const AiAssistant = () => {
             if (convId && token) {
                 try {
                     setIsTyping(true);
-                    const { data } = await axios.get(`${backendurl}/api/chat/history/${convId}`, {
+                    const { data } = await axios.get(`${backendUrl}/api/chat/history/${convId}`, {
                         headers: { token: token }
                     });
                     if (data.success && Array.isArray(data.messages)) setMessages(data.messages);
@@ -61,7 +61,7 @@ const AiAssistant = () => {
         setInput("");
         setIsTyping(true);
         try {
-            const { data } = await axios.post(`${backendurl}/api/chat/ask`, 
+            const { data } = await axios.post(`${backendUrl}/api/chat/ask`, 
                 { message: lastInput, conversationId: convId },
                 { headers: { token: token } }
             );
