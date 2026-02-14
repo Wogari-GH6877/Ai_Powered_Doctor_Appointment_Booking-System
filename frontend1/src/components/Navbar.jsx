@@ -56,11 +56,11 @@ function Navbar() {
                <img className="w-8 rounded-full "src={userData?.image} alt="profile_image" />
                <img className="w-2.5" src={assets.dropdown_icon} alt="drop_down_icon" />
                {dropdownOpen &&
-              (<div className='absolute top-0 right-0 pt-14 font-medium text-gray-600 z-20 hidden group-hover:block'>
+              (<div className='absolute top-0 right-0 pt-14 font-medium text-gray-600 z-20 '>
                  <div className='min-w-48 bg-stone-100 rounded flex flex-col gap-3 p-4'>
-                  <p onClick={()=>navigate("/my-profile")}className='hover:text-black'>My Profile</p>
-                  <p onClick={()=>navigate("/my-appointments")} className='hover:text-black'>My Appointments</p>
-                  <p onClick={()=>Logout()}className='hover:text-black'>Logout</p>
+                  <p onClick={()=>{navigate("/my-profile");setDropdownOpen(false);}}className='hover:text-black'>My Profile</p>
+                  <p onClick={()=>{navigate("/my-appointments");setDropdownOpen(false);}} className='hover:text-black'>My Appointments</p>
+                  <p onClick={()=>{Logout();setDropdownOpen(false);}}className='hover:text-black'>Logout</p>
                  </div>
               </div>)}
             </div>:
