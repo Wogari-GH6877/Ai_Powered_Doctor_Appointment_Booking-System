@@ -167,11 +167,11 @@ useEffect(()=>{
       {/* Top part */}
 
       
-      <div className='md:flex gap-5'>
+      <div className='flex flex-col md:flex-row gap-5 px-4 md:px-0'>
         {/* images part */}
         <div className='flex'>
-          <div className='w-80  border border-black justify-center rounded-2xl bg-primary'>
-              {doctInfo && <img src={doctInfo?.image} alt="Doctor" />}
+          <div className='flex justify-center md:w-80 border border-black rounded-2xl bg-primary'>
+              {doctInfo && <img src={doctInfo?.image} alt="Doctor"  className='rounded-2xl'/>}
           </div>
           
 
@@ -182,16 +182,16 @@ useEffect(()=>{
 
         {/* Middle part */}
 
-        <div className='flex flex-col border border-black justify-center rounded-2xl px-8'>
+        <div className='flex-1 border border-black rounded-2xl p-4 md:p-8'>
 
           {/* text part */}
 
           <div>
             <h1 className='text-2xl mb-3 font-semibold flex items-center gap-2'>{doctInfo?.name} <img src={assets.verified_icon} alt="Verified" className="w-5 h-5" /></h1>
             <p>
-              <span className='text-xl '>{doctInfo?.degree} -</span>
-              <span className='text-xl '>{doctInfo?.speciality}</span>
-              <span className='py-2 px-4 border border-gray-500 ml-2 rounded-full text-black-400'> {doctInfo?.experience} Year</span>
+              <span className='md:text-xl '>{doctInfo?.degree} -</span>
+              <span className='md:text-xl '>{doctInfo?.speciality}</span>
+              <span className='md:py-2 md:px-4 border border-gray-500 ml-2 rounded-full text-black-400 text-sm'> {doctInfo?.experience} Year</span>
 
             </p>
 
@@ -215,7 +215,7 @@ useEffect(()=>{
       <div className='flex flex-col ml-10 gap-4 mt-7'>
         <h1 className='text-xl font-semibold'>Booking slots</h1>
 
-        <div className='flex gap-4 overflow-x-scroll whitespace-nowrap no-scrollbar'>
+        <div className='flex gap-4 overflow-x-auto whitespace-nowrap no-scrollbar px-2 md:px-0'>
 
           {
             docSlots.length && docSlots.map((items,index)=>(
@@ -275,12 +275,12 @@ useEffect(()=>{
         <p className='text-xs'>Simply browse through our extensive list of trusted doctors.</p>
 
 
-        <div className=' justify-center ml-150 w-full grid grid-cols-[repeat(auto-fill,minmax(200px,1fr))] gap-4 gap-y-6 pt-5 px-3  sm:px-0   '>
+        <div className=' grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4 pt-5 px-3'>
         {
           relatedDoc.map((items,index)=>(
-            <div onClick={()=> {navigate(`/appointments/${items._id}`),scrollTo(0,0)}} key={items._id} className='border border-blue-200 rounded-xl overflow-hidden cursor-pointer hover:translate-y-[-10px] transition-all duration-500'>
-              <img className="" src={items.image} alt="" />
-              <div className='p-4'>
+            <div onClick={()=> {navigate(`/appointments/${items._id}`);scrollTo(0,0)}} key={items._id} className='border border-blue-200 rounded-xl overflow-hidden cursor-pointer hover:translate-y-[-10px] transition-all duration-500'>
+              <img className="w-full h-48 object-cover" src={items.image} alt={items.name}  />
+              <div className='p-4 text-center'>
                     <div className='flex items-center gap-2 text-sm text-center text-green-500'>
                        <p className='w-2 h-2 bg-green-500 rounded-full '></p><p>Avaiable</p>
                       </div>
