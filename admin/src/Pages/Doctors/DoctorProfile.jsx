@@ -60,7 +60,7 @@ function DoctorProfile() {
 
             <div className='flex items-center gap-2 text-gray-600'>
               <p>{profileData.degree}-{profileData.speciality}</p>
-              <button className='py-0.5 px-2 border text-xs rounded-full'>{profileData.experience}</button>
+              <button className='py-0.5 px-2 border text-xs rounded-full'>{profileData.experience}-Years</button>
             </div>
 
             {/* Doc About */}
