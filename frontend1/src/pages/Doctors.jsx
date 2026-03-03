@@ -35,7 +35,7 @@ useEffect(()=>{
 
       <div className={`mr-20  flex-col gap-3 pl-10 md:p-0 ${filter?'flex':"hidden sm:flex"}`}>
         
-        <div onClick={()=>{setSpeDoctor(doctors.filter(doc=> doc.speciality==="General_physician"))}}
+        <div onClick={()=>{setSpeDoctor(doctors.filter(doc=> doc.speciality==="General physician"))}}
         className={`py-2 md:px-5  hover:bg-blue-50 border border-blue-200 rounded-xl  text-center cursor-pointer `}>General physician</div>
 
         <div onClick={()=>{setSpeDoctor(doctors.filter(doc=> doc.speciality==="Gynecologist"))}}
@@ -50,7 +50,7 @@ useEffect(()=>{
         <div onClick={()=>{setSpeDoctor(doctors.filter(doc=> doc.speciality==="Neurologist"))}}
         className='py-2 px-5 hover:bg-blue-50 border border-blue-200 rounded-xl text-center cursor-pointer'>Neurologist</div>
 
-        <div onClick={()=>{setSpeDoctor(doctors.filter(doc=> doc.speciality===" Gastroenterologist"))}}
+        <div onClick={()=>{setSpeDoctor(doctors.filter(doc=> doc.speciality==="Gastroenterologist"))}}
         className='py-2 px-5 hover:bg-blue-50 border border-blue-200 rounded-xl text-center cursor-pointer'>Gastroenterologist</div>
 
       </div>
