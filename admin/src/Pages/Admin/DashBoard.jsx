@@ -11,7 +11,7 @@ function DashBoard() {
   useEffect(()=>{
     if(aToken){
       getDashData();
-      console.log(dashData)
+      // console.log(dashData)
     }
   },[aToken]);
 
