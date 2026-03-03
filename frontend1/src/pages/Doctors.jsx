@@ -66,7 +66,17 @@ useEffect(()=>{
               <img className="" src={items.image} alt="" />
               <div className='p-4'>
                     <div className='flex items-center gap-2 text-sm text-center text-green-500'>
-                       <p className='w-2 h-2 bg-green-500 rounded-full '></p><p>Avaiable</p>
+                       <p
+                                        className={`w-2 h-2 rounded-full ${
+                                        items.available
+                                            ? "bg-green-500"
+                                            : "bg-red-500 animate-pulse"
+                                        }`}
+                                    ></p>
+
+                                    <p className={items.available ? "text-green-500" : "text-red-500"}>
+                                        {items.available ? "Available" : "Not Available"}
+                                    </p>
                       </div>
                       <p className='text-gray-900 text-lg font-medium '>{items.name}</p>
                       <p className='text-gray-500 text-sm'>{items.speciality}</p>

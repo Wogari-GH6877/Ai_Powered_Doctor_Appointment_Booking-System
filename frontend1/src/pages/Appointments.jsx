@@ -122,7 +122,7 @@ const bookAppointment=async()=>{
        const slotDate=day + "-" + month + "-" + year;
       //  console.log(slotDate);
         const {data}=await axios.post(backendUrl + "/api/user/book-appointment",{userId:userData._id,docId:doctId,slotDate,slotTime},{headers:{token}});
-        console.log(data);
+        // console.log(data);
           
         if(data.success){
           toast.success(data.message);
@@ -251,15 +251,7 @@ useEffect(()=>{
 
             ))
           }
-          {/* <ul className='flex gap-3'>
-            <li className='py-2 px-3 border border-primary rounded-full text-xs text-center hover:bg-primary hover:text-white cursor-pointer'>8.00 am</li>
-            <li className='py-2 px-3 border border-primary rounded-full text-xs text-center hover:bg-primary hover:text-white cursor-pointer'>8.30 am</li>
-            <li className='py-2 px-3 border border-primary rounded-full text-xs text-center hover:bg-primary hover:text-white cursor-pointer'>9.00 am</li>
-            <li className='py-2 px-3 border border-primary rounded-full text-xs text-center hover:bg-primary hover:text-white cursor-pointer'>9.30 am</li>
-            <li className='py-2 px-3 border border-primary rounded-full text-xs text-center hover:bg-primary hover:text-white cursor-pointer'>10.00 am</li>
-            <li className='py-2 px-3 border border-primary rounded-full text-xs text-center hover:bg-primary hover:text-white cursor-pointer'>10.30 am</li>
-            <li className='py-2 px-3 border border-primary rounded-full text-xs text-center hover:bg-primary hover:text-white cursor-pointer'>11.00 am</li>
-          </ul> */}
+          
         </div>
         <div>
         <button onClick={bookAppointment} className='mt-4 px-8 py-3 bg-primary border border-primary rounded-full text-white '>Book an appointment</button>
@@ -282,7 +274,17 @@ useEffect(()=>{
               <img className="w-full h-48 object-cover" src={items.image} alt={items.name}  />
               <div className='p-4 text-center'>
                     <div className='flex items-center gap-2 text-sm text-center text-green-500'>
-                       <p className='w-2 h-2 bg-green-500 rounded-full '></p><p>Avaiable</p>
+                       <p
+                                        className={`w-2 h-2 rounded-full ${
+                                        items.available
+                                            ? "bg-green-500"
+                                            : "bg-red-500 animate-pulse"
+                                        }`}
+                                    ></p>
+
+                                    <p className={items.available ? "text-green-500" : "text-red-500"}>
+                                        {items.available ? "Available" : "Not Available"}
+                                    </p>
                       </div>
                       <p className='text-gray-900 text-lg font-medium '>{items.name}</p>
                       <p className='text-gray-500 text-sm'>{items.speciality}</p>

@@ -1,6 +1,6 @@
 import React, { useContext, useState } from 'react'
 import { assets } from '../../assets/assets_admin/assets'
-import { AdminContext } from '../../context/AdminContext';
+import { AdminContext } from '../../Context/AdminContext';
 import { toast } from 'react-toastify';
 import axios from "axios"
 
@@ -10,7 +10,7 @@ function AddDoctor() {
     const [name,setName]=useState("");
     const [email,setEmail]=useState("");
     const [password,setPassword]=useState("");
-    const [experince,setExperince]=useState("1 Year");
+    const [experince,setExperince]=useState("");
     const [fee,setFee]=useState("");
     const [about,setAbout]=useState("");
     const [speciality,setSpeciality]=useState("General physician");
@@ -82,7 +82,8 @@ function AddDoctor() {
                 <label htmlFor="doc-img">
                     <img className="w-16 bg-gray-100 rounded-full cursor:pointer" src={docImg? URL.createObjectURL(docImg) : assets.upload_area} alt="" />
                 </label>
-                <input className="border border-dashed border-primary-300 rounded-lg p-2"onChange={(e)=>setDocImg(e.target.files[0])} type="file"  id="doc-img" hidden/>
+                <input className="border border-dashed border-primary-300 rounded-lg p-2"onChange={(e)=>{
+                    setDocImg(e.target.files[0])}} type="file"  id="doc-img" hidden/>
                 <p className='text-primary font-semibold'>Upload doctor <br />picture</p>
             </div>
 
@@ -105,18 +106,7 @@ function AddDoctor() {
 
                     <div className='flex-1 flex flex-col gap-1'>
                         <p>Doctor Experince</p>
-                        <select onChange={(e)=>{setExperince(e.target.value)}} value={experince}className="border rounded px-3 py-2"name="" id="">
-                            <option value="1">1 Year</option>
-                            <option value="2">2 Year</option>
-                            <option value="3">3 Year</option>
-                            <option value="4">4 Year</option>
-                            <option value="5">5 Year</option>
-                            <option value="6">6 Year</option>
-                            <option value="7">7 Year</option>
-                            <option value="8">8 Year</option>
-                            <option value="9">9 Year</option>
-                            <option value="10">10 Year</option>
-                        </select>
+                        <input type="text" onChange={(e)=>{setExperince(e.target.value)} } value={experince} placeholder='1-year' required className="border rounded px-3 py-2"/>
                     </div>
 
                     <div className='flex-1 flex flex-col gap-1'>

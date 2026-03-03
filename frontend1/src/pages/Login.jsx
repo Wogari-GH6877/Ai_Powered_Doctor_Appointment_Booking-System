@@ -35,6 +35,8 @@ import { toast } from 'react-toastify';
         const {data}=await axios.post(backendUrl + "/api/user/login",{email,password});
         // console.log(data)
         if(data.success){
+              // console.log(data.token)
+
           localStorage.setItem("token",data.token);
           setToken(data.token);
           navigate("/");

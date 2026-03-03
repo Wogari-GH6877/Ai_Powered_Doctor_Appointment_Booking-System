@@ -1,0 +1,72 @@
+@import "tailwindcss";
+
+@theme{
+
+  --color-primary:#7375F5;
+
+    --color-surface:#1a2329;
+
+}
+
+.active hr{
+  display: block;
+}
+@layer base{
+  html{
+    scroll-behavior: smooth;
+  }
+  button{
+    cursor:pointer
+  }}
+@layer components{
+  .glass{
+    background-color: color-mix(in srgb,var(--color-surface)50%,transparent);
+    backdrop-filter: blur(16px);
+  }
+
+  .strong-glass{
+    background-color: color-mix(in srgb,var(--color-surface)50%,transparent);
+    backdrop-filter: blur(24px);
+  }
+  .no-scrollbar::-webkit-scrollbar {
+  display: none;
+}
+
+.no-scrollbar {
+  -ms-overflow-style: none;  /* IE & Edge */
+  scrollbar-width: none;     /* Firefox */
+}
+
+@keyframes revealUp {
+  0% {
+    opacity: 0;
+    transform: translateY(30px);
+  }
+  100% {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.animate-reveal {
+  animation: revealUp 0.8s cubic-bezier(0.2, 0.8, 0.2, 1) forwards;
+}
+
+/* Optional: add a shine effect to the text */
+.text-shine {
+  background: linear-gradient(to right, #fff 20%, #D1D5FF 40%, #D1D5FF 60%, #fff 80%);
+  background-size: 200% auto;
+  color: #000;
+  background-clip: text;
+  text-fill-color: transparent;
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  animation: shine 5s linear infinite;
+}
+
+@keyframes shine {
+  to {
+    background-position: 200% center;
+  }
+}
+}

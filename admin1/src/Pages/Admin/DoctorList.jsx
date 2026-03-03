@@ -1,6 +1,6 @@
 import React, { use, useEffect } from 'react'
 import { useContext } from 'react'
-import { AdminContext } from '../../context/AdminContext';
+import { AdminContext } from '../../Context/AdminContext';
 function DoctorList() {
 
   const {doctors,aToken,getAllDoctors,ChangeAvailability}=useContext(AdminContext);
@@ -10,7 +10,11 @@ function DoctorList() {
       getAllDoctors();
     }
     
-  },[aToken])
+  },[aToken]);
+
+  
+
+
   return (
     <div className='m-5 max-h-[90vh] overflow-y-scroll '>
       <h1 className='text-lg font-medium'>All Doctos</h1>
