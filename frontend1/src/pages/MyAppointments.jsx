@@ -44,7 +44,7 @@ function MyAppointments() {
             setAppointments(data.appointments.reverse());
         }
       } catch (error) {
-        console.log(error);
+        // console.log(error);
         toast.error(error.message);
     }
   }
@@ -79,9 +79,9 @@ function MyAppointments() {
             <div></div>
 
             <div className='flex flex-col gap-2 justify-end'>
-              {!item.cancelled && item.payment && !item.isCompleted && <button className='text-sm text-stone-500 text-center sm:min-w-48 py-2 border roundend hover:bg-primary hover:text-white transition-all duration-300'>Pay Online</button>}
-            {!item.cancelled && item.payment && !item.isCompleted && <button onClick={()=>cancelAppointement(item._id)}className='text-sm text-stone-500 text-center sm:min-w-48 py-2 border roundend hover:bg-red-600 hover:text-white transition-all duration-300'>Cancel appointment</button>}
-            {item.cancelled && item.payment && !item.isCompleted && <button className='sm:min-w-48 py-2 border border-red-500 rounded text-red-500'>Appointment cancelled</button>}
+              {!item.cancelled && !item.payment && !item.isCompleted && <button className='text-sm text-stone-500 text-center sm:min-w-48 py-2 border roundend hover:bg-primary hover:text-white transition-all duration-300'>Pay Online</button>}
+            {!item.cancelled && !item.payment && !item.isCompleted && <button onClick={()=>cancelAppointement(item._id)}className='text-sm text-stone-500 text-center sm:min-w-48 py-2 border roundend hover:bg-red-600 hover:text-white transition-all duration-300'>Cancel appointment</button>}
+            {item.cancelled && !item.payment && !item.isCompleted && <button className='sm:min-w-48 py-2 border border-red-500 rounded text-red-500'>Appointment cancelled</button>}
             {item.isCompleted && <button className='sm:min-w-48 py-2 border border-green-500 rounded text-green-500 '>Completed</button>}
             </div>
           </div>
