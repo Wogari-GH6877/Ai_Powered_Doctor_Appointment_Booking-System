@@ -25,27 +25,15 @@ connectCloudinary();
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
 app.use(cors({
-    origin: ["http://localhost:5177","http://localhost:5174","http://localhost:5173",process.env.CLIENT_URL,process.env.ADMIN_URL],
+    origin: ["http://localhost:5177","http://localhost:5174","http://localhost:5173",
+        process.env.CLIENT_URL1,process.env.ADMIN_URL1,
+    process.env.CLIENT_URL2,process.env.ADMIN_URL2],
   methods: ["GET", "POST", "PUT", "DELETE"],
   credentials: true
 }));
 
 
 
-app.use(cors({
-  origin: function (origin, callback) {
-    if (!origin || allowedOrigins.includes(origin)) {
-      callback(null, true);
-    } else {
-      console.log("Blocked by CORS:", origin);
-      callback(new Error("Not allowed by CORS"));
-    }
-  },
-  credentials: true,
-}));
-
-app.options(/.*/, cors());
-// "http://localhost:5174","http://localhost:5173","http://localhost:5175",
 
 
 
