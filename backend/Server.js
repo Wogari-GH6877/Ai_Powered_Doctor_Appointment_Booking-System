@@ -44,8 +44,7 @@ app.use(cors({
   credentials: true,
 }));
 
-app.options("*", cors());
-
+app.options(/.*/, cors());
 // "http://localhost:5174","http://localhost:5173","http://localhost:5175",
 
 
