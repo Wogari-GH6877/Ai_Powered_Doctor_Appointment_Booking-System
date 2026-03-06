@@ -22,6 +22,8 @@ function Login() {
             if(state==="Admin"){
                 const {data}=await axios.post(backendUrl+"/api/admin/admin-login",{email,password});
                 if(data.success){
+                    localStorage.removeItem("dToken");
+
                     localStorage.setItem("aToken",data.token);
                     setAToken(data.token)
                     toast.success("Logged in successfully")
@@ -34,6 +36,8 @@ function Login() {
 
                 const {data}=await axios.post(backendUrl+"/api/doctor/login",{email,password});
                 if(data.success){
+                        localStorage.removeItem("aToken");
+
                     localStorage.setItem("dToken",data.token);
                     setDToken(data.token)
                     toast.success("Logged in successfully")
